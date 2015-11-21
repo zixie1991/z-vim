@@ -300,6 +300,19 @@
 " }
 
 " C++ Settings {
+    " snipMate Settings {
+        " Share same snippets between C and C++.
+        au BufNewFile,BufRead *.cpp,*.h,*.hpp set ft=cpp.c
+        " 设置C++缩进
+        autocmd FileType cpp setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=79
+    " }
+
+    " todo Settings {
+        if getline(1) =~? '^#\?TODO\>'
+            setfiletype todo
+        endif
+    " }
+
     " 接口与实现快速切换 {
         Bundle 'a.vim'
         Bundle 'c.vim'
