@@ -22,3 +22,5 @@ C/C++、Python开发者
 
 目录
 ----
+
+*   [插件管理](docs/plugin)
