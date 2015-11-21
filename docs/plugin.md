@@ -1,9 +1,9 @@
 插件管理
 ====
 
-插件管理主要包括插件下载和组织两件事，本项目的vim使用vundle(https://github.com/vim-scripts/vundle)来管理插件。
+插件管理主要包括插件下载和组织两件事，本项目的vim使用[vundle](https://github.com/vim-scripts/vundle)来管理插件。
 
-安装Vundle
+Vundle安装
 ----
 
 ```
