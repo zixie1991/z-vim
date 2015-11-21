@@ -297,6 +297,9 @@
         let g:ctrlp_follow_symlinks=1 
     " }
 
+    " 编辑大文件 {
+        Bundle 'markwu/largefile'
+    " }
 " }
 
 " C++ Settings {
@@ -446,8 +449,10 @@
         let g:neocomplcache_omni_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
     " }
 
-    " 编辑大文件 {
-        Bundle 'markwu/largefile'
+    " 语法检查 {
+        Bundle 'scrooloose/syntastic'
+        " 在打开文件的时候检查
+        let g:syntastic_check_on_open = 1
     " }
 " }
 
