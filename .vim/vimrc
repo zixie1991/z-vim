@@ -139,11 +139,6 @@
     set spellsuggest=5 " show only 9 suggestions for misspelled words
 " }
 
-" Color Scheme {
-    set colorcolumn=80
-    set t_Co=256
-" }
-
 " Vundle Settings {
     " Install configured bundles :BundleInstall
     set rtp+=~/.vim/bundle/vundle
@@ -152,4 +147,337 @@
     " let Vundle manage Vundle
     " required! 
     Bundle 'gmarik/vundle'
+" }
+
+" Color Scheme {
+    set colorcolumn=80
+    set t_Co=256
+
+    Bundle 'tomasr/molokai'
+    colorscheme molokai
+    let g:molokai_original = 1
+" }
+
+" Plugin Settings {
+    " 定义快捷键的前缀，即 <Leader>
+    let mapleader=","
+    " 括号显示增强 {
+        Bundle 'kien/rainbow_parentheses.vim'
+        " 不加入这行, 防止黑色括号出现, 很难识别
+        " \ ['black',       'SeaGreen3'],
+        let g:rbpt_colorpairs = [
+            \ ['brown',       'RoyalBlue3'],
+            \ ['Darkblue',    'SeaGreen3'],
+            \ ['darkgray',    'DarkOrchid3'],
+            \ ['darkgreen',   'firebrick3'],
+            \ ['darkcyan',    'RoyalBlue3'],
+            \ ['darkred',     'SeaGreen3'],
+            \ ['darkmagenta', 'DarkOrchid3'],
+            \ ['brown',       'firebrick3'],
+            \ ['gray',        'RoyalBlue3'],
+            \ ['darkmagenta', 'DarkOrchid3'],
+            \ ['Darkblue',    'firebrick3'],
+            \ ['darkgreen',   'RoyalBlue3'],
+            \ ['darkcyan',    'SeaGreen3'],
+            \ ['darkred',     'DarkOrchid3'],
+            \ ['red',         'firebrick3'],
+            \ ]
+    " }
+
+    " 设置状态栏主题 powerline {
+        Bundle 'Lokaltog/vim-powerline'
+        set guifont=PowerlineSymbols\ for\ Powerline
+        set nocompatible
+        set t_Co=256
+        let g:Powerline_symbols = 'fancy'
+    " }
+
+    " Indent Guides {
+        " 将相同缩进的代码关联起来
+        Bundle 'nathanaelkane/vim-indent-guides'
+        " 随 vim 自启动
+        let g:indent_guides_enable_on_vim_startup=1
+        " 从第二层开始可视化显示缩进
+        let g:indent_guides_start_level=2
+        " 色块宽度
+        let g:indent_guides_guide_size=1
+        " 快捷键 i 开/关缩进可视化
+        :nmap <silent> <Leader>i <Plug>IndentGuidesToggle
+    " }
+
+    " 代码折叠 {
+        " za，打开或关闭当前折叠；zM，关闭所有折叠；zR，打开所有折叠
+        " 基于缩进或语法进行代码折叠
+        "set foldmethod=indent
+        set foldmethod=syntax
+        " 启动 vim 时关闭折叠代码
+        set nofoldenable
+    " }
+
+    " Bash like keys for the command line {
+        cnoremap <C-A>      <Home>
+        cnoremap <C-E>      <End>
+        cnoremap <C-K>      <C-U>
+
+        cnoremap <C-P> <Up>
+        cnoremap <C-N> <Down>
+    " }
+
+    " Useful mappings for managing tabs {
+        " open a new tab
+        map <leader>tn :tabnew<cr>
+        map <leader>to :tabonly<cr>
+        map <leader>tc :tabclose<cr>
+        map <leader>tm :tabmove 
+
+        " Opens a new tab with the current buffer's path
+        " Super useful when editing files in the same directory
+        map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
+
+        map <C-h> :tabprev<cr>
+        map <C-l> :tabnext<cr>
+    " }
+
+    " 快速浏览标签visualmark {
+        Bundle 'zhisheng/visualmark.vim'
+        if &bg == "dark"
+            highlight SignColor ctermfg=white ctermbg=blue guifg=white guibg=peru
+        else
+            highlight SignColor ctermbg=white ctermfg=red guibg=grey guifg=RoyalBlue3
+        endif
+    " }
+    
+    " 标签列表 {
+        " Tagbar: The Vim class outline viewer
+        Bundle 'majutsushi/tagbar'
+        " layout
+        let g:tagbar_left=1
+        let g:tagbar_width=25
+        let g:tagbar_autofocus = 1
+        let g:tagbar_sort = 0
+        let g:tagbar_compact = 1
+        " toggle the Tagbar window
+        "nmap <F8> :TagbarToggle<CR>
+    " } 
+
+    " The NERD tree Settings {
+        Bundle 'The-NERD-tree'
+        " Nerd Tree
+        let NERDChristmasTree=0
+        let NERDTreeWinSize=30
+        let NERDTreeChDirMode=2
+        let NERDTreeIgnore=['\~$', '\.pyc$', '\.swp$']
+        " let NERDTreeSortOrder=['^__\.py$', '\/$', '*', '\.swp$', '\~$']
+        let NERDTreeShowBookmarks=1
+        let NERDTreeWinPos = "right"
+    " }
+
+    " Make Arrow Keys Useful Again {
+        map <right> <ESC>:NERDTreeToggle<RETURN>
+        map <left> <ESC>:TagbarToggle<RETURN>
+        "map <right> <ESC>:Tlist<RETURN>
+        "map <up> <ESC>gT
+        "map <down> <ESC>gt
+    " }
+
+    " 文件名、路径名模糊搜索 {
+        Bundle 'ctrlpvim/ctrlp.vim'
+        let g:ctrlp_map = '<leader>p'
+        let g:ctrlp_cmd = 'CtrlP'
+        map <leader>f :CtrlPMRU<CR>
+        let g:ctrlp_custom_ignore = {
+            \ 'dir':  '\v[\/]\.(git|hg|svn|rvm)$',
+            \ 'file': '\v\.(exe|so|dll|zip|tar|tar.gz|pyc)$',
+            \ }
+        let g:ctrlp_working_path_mode=0
+        let g:ctrlp_match_window_bottom=1
+        let g:ctrlp_max_height=15
+        let g:ctrlp_match_window_reversed=0
+        let g:ctrlp_mruf_max=500
+        let g:ctrlp_follow_symlinks=1 
+    " }
+
+" }
+
+" C++ Settings {
+    " 接口与实现快速切换 {
+        Bundle 'a.vim'
+        Bundle 'c.vim'
+        " *.cpp 和 *.h 间切换
+        nmap <Leader>ch :A<CR>
+        " 子窗口中显示 *.cpp 或 *.h
+        nmap <Leader>sch :AS<CR>
+    " }
+
+    " ctags {
+        " ctags setting
+        " apt-get install ctags
+        " ctags -R
+        " 按下F5重新生成tag文件，并更新taglist
+        map <F5> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR><CR> :TlistUpdate<CR>
+        imap <F5> <ESC>:!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR><CR> :TlistUpdate<CR>
+
+        set tags=./tags,./../tags,./*/tags;
+        set tags+=~/.vim/mylib/cpp_src/stl_tags
+
+        " 正向遍历同名标签
+        nmap <Leader>gn :tnext<CR>
+        " 反向遍历同名标签
+        nmap <Leader>gp :tprevious<CR>
+
+        " cd /usr/include/c++/4.8
+        " ctags -R --c++-kinds=+l+x+p --fields=+iaSl --extra=+q --language-force=c++ -f stdcpp.tags
+        " let OmniCpp_DefaultNamespaces = ["_GLIBCXX_STD"]
+        " set tags+=/usr/include/c++/4.8/stdcpp.tags
+    " }
+
+    " 代码注释 {
+        Bundle 'scrooloose/nerdcommenter'
+    " }
+
+    " 文档注释 {
+        Bundle 'DoxygenToolkit.vim'
+        map <leader>dox :Dox<CR>
+    " }
+
+    " 代码自动补全 {
+        Bundle 'Shougo/neocomplcache'
+        "Note: This option must set it in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
+        " Disable AutoComplPop.
+        let g:acp_enableAtStartup = 0
+        " Use neocomplcache.
+        let g:neocomplcache_enable_at_startup = 1
+        " Use smartcase.
+        let g:neocomplcache_enable_smart_case = 1
+        " Set minimum syntax keyword length.
+        let g:neocomplcache_min_syntax_length = 3
+        let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
+
+        " Enable heavy features.
+        " Use camel case completion.
+        "let g:neocomplcache_enable_camel_case_completion = 1
+        " Use underbar completion.
+        "let g:neocomplcache_enable_underbar_completion = 1
+
+        " Define dictionary.
+        let g:neocomplcache_dictionary_filetype_lists = {
+            \ 'default' : '',
+            \ 'vimshell' : $HOME.'/.vimshell_hist',
+            \ 'scheme' : $HOME.'/.gosh_completions'
+                \ }
+
+        " Define keyword.
+        if !exists('g:neocomplcache_keyword_patterns')
+            let g:neocomplcache_keyword_patterns = {}
+        endif
+        let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
+
+        " Plugin key-mappings.
+        inoremap <expr><C-g>     neocomplcache#undo_completion()
+        inoremap <expr><C-l>     neocomplcache#complete_common_string()
+
+        " Recommended key-mappings.
+        " <CR>: close popup and save indent.
+        inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+        function! s:my_cr_function()
+        return neocomplcache#smart_close_popup() . "\<CR>"
+        " For no inserting <CR> key.
+        "return pumvisible() ? neocomplcache#close_popup() : "\<CR>"
+        endfunction
+        " <TAB>: completion.
+        inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+        " <C-h>, <BS>: close popup and delete backword char.
+        inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
+        inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
+        inoremap <expr><C-y>  neocomplcache#close_popup()
+        inoremap <expr><C-e>  neocomplcache#cancel_popup()
+        " Close popup by <Space>.
+        "inoremap <expr><Space> pumvisible() ? neocomplcache#close_popup() : "\<Space>"
+
+        " For cursor moving in insert mode(Not recommended)
+        "inoremap <expr><Left>  neocomplcache#close_popup() . "\<Left>"
+        "inoremap <expr><Right> neocomplcache#close_popup() . "\<Right>"
+        "inoremap <expr><Up>    neocomplcache#close_popup() . "\<Up>"
+        "inoremap <expr><Down>  neocomplcache#close_popup() . "\<Down>"
+        " Or set this.
+        "let g:neocomplcache_enable_cursor_hold_i = 1
+        " Or set this.
+        "let g:neocomplcache_enable_insert_char_pre = 1
+
+        " AutoComplPop like behavior.
+        "let g:neocomplcache_enable_auto_select = 1
+
+        " Shell like behavior(not recommended).
+        "set completeopt+=longest
+        "let g:neocomplcache_enable_auto_select = 1
+        "let g:neocomplcache_disable_auto_complete = 1
+        "inoremap <expr><TAB>  pumvisible() ? "\<Down>" : "\<C-x>\<C-u>"
+
+        " Enable omni completion.
+        autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+        autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+        autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+        autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+        autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+
+        " Enable heavy omni completion.
+        if !exists('g:neocomplcache_omni_patterns')
+        let g:neocomplcache_omni_patterns = {}
+        endif
+        let g:neocomplcache_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
+        let g:neocomplcache_omni_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
+        let g:neocomplcache_omni_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+
+        " For perlomni.vim setting.
+        " https://github.com/c9s/perlomni.vim
+        let g:neocomplcache_omni_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
+    " }
+
+    " 编辑大文件 {
+        Bundle 'markwu/largefile'
+    " }
+" }
+
+" Python Settings {
+    " python 基本设置 {
+        " Python 文件的一般设置，比如不要 tab 等
+        autocmd FileType python set tabstop=4 shiftwidth=4 expandtab ai
+
+        " 保存python文件时删除多余空格
+        " Delete trailing white space on save, useful for Python and CoffeeScript ;)
+        func! DeleteTrailingWS()
+            exe "normal mz"
+            %s/\s\+$//ge
+            exe "normal `z"
+        endfunc
+        autocmd BufWrite *.py :call DeleteTrailingWS()
+
+        " 定义函数AutoSetFileHead，自动插入文件头
+        autocmd BufNewFile *.sh,*.py exec ":call AutoSetFileHead()"
+        function! AutoSetFileHead()
+            "如果文件类型为.sh文件
+            if &filetype == 'sh'
+                call setline(1, "\#!/bin/bash")
+            endif
+
+            "如果文件类型为python
+            if &filetype == 'python'
+                call setline(1, "\#!/usr/bin/env python")
+                call append(1, "\# -*- coding: utf-8 -*-")
+            endif
+
+            normal G
+            normal o
+            normal o
+        endfunc
+
+        " c-F6 to run python script
+        nnoremap <buffer> <c-F6> :exec '!python' shellescape(@%, 1)<cr>
+    " }
+
+    " python 自动补全 jedi-vim {
+        Bundle 'davidhalter/jedi-vim'
+        let g:jedi#auto_initialization = 0
+        let g:jedi#completions_command = "<C-N>"
+    " }
 " }
