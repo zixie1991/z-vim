@@ -1,2 +1,12 @@
-# z-vim
-zixie1991's personal vim config file
+zixie1991的vim配置
+====
+
+使用vim已经有3年时间了，一度试图将vim打造为C/C++、Python IDE。但渐渐发现
+插件配置越来越多、配置文件组织也越来越乱，所以决定从0开始整理之前的vim配置，
+并将自己的vim打造为一款称手好用的编辑器。
+
+版本
+----
+
+目录
+----
