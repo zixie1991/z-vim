@@ -1,11 +1,13 @@
 HOME = $(shell cd && pwd)
 
 install-desktop:
-	cp -r .vimrc ${HOME}/.vimrc
+	/bin/rm -rf ~/.vim ~/.vimrc
+	cp -r .vimrc_desktop ${HOME}/.vimrc
 	cp -r .vim ${HOME}
-	git clone https://github.com/vim-scripts/vundle.git ${HOME}/.vim/bundle/vundle
+	git clone https://github.com/VundleVim/Vundle.vim.git ${HOME}/.vim/bundle/vundle
 
 install-server:
+	/bin/rm -rf ~/.vim ~/.vimrc
 	cp -r .vimrc_server ${HOME}/.vimrc
 	cp -r .vim ${HOME}
-	git clone https://github.com/vim-scripts/vundle.git ${HOME}/.vim/bundle/vundle
+	git clone https://github.com/VundleVim/Vundle.vim.git ${HOME}/.vim/bundle/vundle
