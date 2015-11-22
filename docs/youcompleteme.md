@@ -29,6 +29,6 @@ git submodule update --init --recursive
 编译YCM
 
 ```
-cd ~/.vim/bundle/YouCompleteMe
+cd ~/.vim/bundle/YouCompleteMe/
 ./install.sh --clang-completer
 ```
