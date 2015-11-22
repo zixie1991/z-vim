@@ -536,6 +536,17 @@
         nnoremap <buffer> <c-F6> :exec '!python' shellescape(@%, 1)<cr>
     " }
 
+    " 语法高亮 {
+        Bundle 'hdima/python-syntax'
+        let python_highlight_all = 1
+    " }
+
+    " 语法检查 {
+        " python fly check, 弥补syntastic只能打开和保存才检查语法的不足
+        Bundle 'kevinw/pyflakes-vim'
+        let g:pyflakes_use_quickfix = 0
+    " }
+
     " python 自动补全 jedi-vim {
         Bundle 'davidhalter/jedi-vim'
         let g:jedi#auto_initialization = 0
