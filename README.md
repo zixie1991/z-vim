@@ -17,6 +17,33 @@ vim配置
 
 C/C++、Python开发者
 
+安装
+----
+
+1.  clone z-vim到本地
+```
+git clone https://github.com/zixie1991/z-vim.git
+```
+
+2.  安装第三依赖
+```
+# python devel
+sudo pip install pylint
+sudo pip install pep8
+```
+
+3.  拷贝配置文件到工作目录（vim配置文件分为desktop和server两个版本，server版功能相对desktop版简洁）
+```
+make install-desktop
+make install-server
+```
+
+4.  安装插件
+    +   启动vim
+    +   执行命令 `:BundleInstall`
+
+5.  编译必要插件（如YouCompleteMe）
+
 版本
 ----
 
