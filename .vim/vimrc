@@ -300,6 +300,41 @@
     " 编辑大文件 {
         Bundle 'markwu/largefile'
     " }
+
+    " 选中区块 {
+        Bundle 'terryma/vim-expand-region'
+        " map + <Plug>(expand_region_expand)
+        " map _ <Plug>(expand_region_shrink)
+        vmap v <Plug>(expand_region_expand)
+        vmap V <Plug>(expand_region_shrink)
+    " }
+
+    " 类似sublimetext的搜索 {
+        Bundle "dyng/ctrlsf.vim"
+        " In CtrlSF window:
+        " 回车/o, 打开
+        " t       在tab中打开(建议)
+        " T - Lkie t but focus CtrlSF window instead of opened new tab.
+        " q - Quit CtrlSF window.
+        nmap \ <Plug>CtrlSFCwordPath<CR>
+        " let g:ctrlsf_position = 'below'
+        " let g:ctrlsf_winsize = '30%'
+        let g:ctrlsf_auto_close = 0
+        let g:ctrlsf_confirm_save = 0
+        " Note: cannot use <CR> or <C-m> for open
+        " Use : <sapce> or <tab>
+        let g:ctrlsf_mapping = {
+            \ "open"  : "<Space>",
+            \ "openb" : "O",
+            \ "tab"   : "t",
+            \ "tabb"  : "T",
+            \ "prevw" : "p",
+            \ "quit"  : "q",
+            \ "next"  : "<C-J>",
+            \ "prev"  : "<C-K>",
+            \ "pquit" : "q",
+            \ }
+    " }
 " }
 
 " C++ Settings {
