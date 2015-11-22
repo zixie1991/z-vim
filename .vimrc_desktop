@@ -1,0 +1,477 @@
+" Basics {
+    set nocompatible " explicitly get out of vi-compatible mode set autoindent  " indent as above
+    set smartindent " guess where to indent
+    "set noexrc " don't use local version of .(g)vimrc, .exrc
+
+    "set background=dark " we plan to use a dark background
+    set background=light " we plan to use a light background
+    set cpoptions=aABceFsmq
+    "             |||||||||
+    "             ||||||||+-- When joining lines, leave the cursor 
+    "             |||||||      between joined lines
+    "             |||||||+-- When a new match is created (showmatch) 
+    "             ||||||      pause for .5
+    "             ||||||+-- Set buffer options when entering the 
+    "             |||||      buffer
+    "             |||||+-- :write command updates current file name
+    "             ||||+-- Automatically add <CR> to the last line 
+    "             |||      when using :@r
+    "             |||+-- Searching continues at the end of the match 
+    "             ||      at the cursor position
+    "             ||+-- A backslash has no special meaning in mappings
+    "             |+-- :write updates alternative file name
+    "             +-- :read updates alternative file name
+    syntax on " syntax highlighting on
+" }
+
+" General {
+    filetype plugin indent on " load filetype plugins/indent settings
+    set autochdir " always switch to the current file directory 
+    set backspace=indent,eol,start " make backspace a more flexible
+    set whichwrap+=<,>,h,l
+    set backup " make backup files
+    set backupdir=~/.vim/backup " where to put backup files
+    set clipboard+=unnamed " share windows clipboard
+    set noswapfile " disable swap files
+    set directory=/tmp " directory to place swap files in
+    set fileformats=unix,dos,mac " support all three, in this order
+    set hidden " you can change buffers without saving
+    set iskeyword+=_,$,@,%,#,: " none of these are word dividers 
+    "set mouse=a " use mouse everywhere
+    set mouse=v
+    set noerrorbells " don't make noise
+    set novisualbell " don't make noise
+    set t_vb= " don't make noise
+    set whichwrap=b,s,h,l,<,>,~,[,] " everything wraps
+    "             | | | | | | | | |
+    "             | | | | | | | | +-- "]" Insert and Replace
+    "             | | | | | | | +-- "[" Insert and Replace
+    "             | | | | | | +-- "~" Normal
+    "             | | | | | +-- <Right> Normal and Visual
+    "             | | | | +-- <Left> Normal and Visual
+    "             | | | +-- "l" Normal and Visual (not recommended)
+    "             | | +-- "h" Normal and Visual (not recommended)
+    "             | +-- <Space> Normal and Visual
+    "             +-- <BS> Normal and Visual
+    set wildmenu " turn on command line completion wild style
+    " ignore these list file extensions
+    set wildignore=*.dll,*.o,*.obj,*.bak,*.exe,*.pyc,
+                    \*.jpg,*.gif,*.png
+    set wildmode=list:longest " turn on wild mode huge list
+    set autoread " Set to auto read when a file is changed from the outside
+    set history=1000 " Sets how many lines of history VIM has to remember
+    set linebreak
+    " Set the default file encoding to UTF-8: ``set encoding=utf-8``
+    set encoding=utf-8
+    set fileencodings=utf-8,chinese,ucs-bom,latin-1
+    "language messages zh_CN.utf-8
+    language messages en_US.UTF-8
+" }
+
+" Vim UI {
+    set cursorcolumn " highlight the current column
+    set cursorline " highlight current line
+    set incsearch " BUT do highlight as you type you 
+                   " search phrase
+    set laststatus=2 " always show the status line
+    set lazyredraw " do not redraw while running macros
+    set linespace=0 " don't insert any extra pixel lines 
+                     " betweens rows
+    "set list " we do what to show tabs, to ensure we get them 
+              " out of my files
+    "set listchars=tab:>-,trail:- " show tabs and trailing 
+    set matchtime=5 " how many tenths of a second to blink 
+                     " matching brackets for
+    " set nohlsearch " do not highlight searched for phrases
+    set hlsearch " do highlight searched for phrases
+    set nostartofline " leave my cursor where it was
+    set novisualbell " don't blink
+    set number " turn on line numbers
+    set numberwidth=5 " We are good up to 99999 lines
+    set report=0 " tell us when anything is changed via :...
+    set ruler " Always show current positions along the bottom
+    set scrolloff=10 " Keep 10 lines (top/bottom) for scope
+    set shortmess=aOstT " shortens messages to avoid 
+                         " 'press a key' prompt
+    set showcmd " show the command being typed
+    set showmatch " show matching brackets
+    set sidescrolloff=10 " Keep 5 lines at the size
+    set statusline=%F%m%r%h%w[%L][%{&ff}]%y[%p%%][%04l,%04v]
+    "              | | | | |  |   |      |  |     |    |
+    "              | | | | |  |   |      |  |     |    + current 
+    "              | | | | |  |   |      |  |     |       column
+    "              | | | | |  |   |      |  |     +-- current line
+    "              | | | | |  |   |      |  +-- current % into file
+    "              | | | | |  |   |      +-- current syntax in 
+    "              | | | | |  |   |          square brackets
+    "              | | | | |  |   +-- current fileformat
+    "              | | | | |  +-- number of lines
+    "              | | | | +-- preview flag in square brackets
+    "              | | | +-- help flag in square brackets
+    "              | | +-- readonly flag in square brackets
+    "              | +-- rodified flag in square brackets
+    "              +-- full path to file in the buffer
+" }
+
+" Text Formatting/Layout {
+    "set completeopt= " don't use a pop up menu for completions
+    set expandtab " no real tabs please!
+    set smarttab  " insert or delete tab as smart
+    set formatoptions=rq " Automatically insert comment leader on return, 
+                          " and let gq format comments
+    set ignorecase " case insensitive by default
+    set infercase " case inferred by default
+    set nowrap " do not wrap line
+    set shiftround " when at 3 spaces, and I hit > ... go to 4, not 5
+    set smartcase " if there are caps, go case-sensitive
+    set shiftwidth=4 " auto-indent amount when using cindent, 
+                      " >>, << and stuff like that
+    set softtabstop=4 " when hitting tab or backspace, how many spaces 
+                       "should a tab be (see expandtab)
+    set tabstop=4 " real tabs should be 8, and they will show with 
+                   " set list on
+    set textwidth=180
+    set magic "Set magic on, for regular expressions
+
+    " Turn on spell checking with English dictionary
+    set nospell
+    set spelllang=en
+    set spellsuggest=5 " show only 9 suggestions for misspelled words
+" }
+
+" Vundle Settings {
+    " Install configured bundles :BundleInstall
+    set rtp+=~/.vim/bundle/vundle
+    call vundle#rc()
+
+    " let Vundle manage Vundle
+    " required! 
+    Bundle 'gmarik/vundle'
+" }
+
+" Color Scheme {
+    set colorcolumn=80
+    set t_Co=256
+
+    Bundle 'tomasr/molokai'
+    colorscheme molokai
+    let g:molokai_original = 1
+" }
+
+" Plugin Settings {
+    " 定义快捷键的前缀，即 <Leader>
+    let mapleader=","
+    " 括号显示增强 {
+        Bundle 'kien/rainbow_parentheses.vim'
+        " 不加入这行, 防止黑色括号出现, 很难识别
+        " \ ['black',       'SeaGreen3'],
+        let g:rbpt_colorpairs = [
+            \ ['brown',       'RoyalBlue3'],
+            \ ['Darkblue',    'SeaGreen3'],
+            \ ['darkgray',    'DarkOrchid3'],
+            \ ['darkgreen',   'firebrick3'],
+            \ ['darkcyan',    'RoyalBlue3'],
+            \ ['darkred',     'SeaGreen3'],
+            \ ['darkmagenta', 'DarkOrchid3'],
+            \ ['brown',       'firebrick3'],
+            \ ['gray',        'RoyalBlue3'],
+            \ ['darkmagenta', 'DarkOrchid3'],
+            \ ['Darkblue',    'firebrick3'],
+            \ ['darkgreen',   'RoyalBlue3'],
+            \ ['darkcyan',    'SeaGreen3'],
+            \ ['darkred',     'DarkOrchid3'],
+            \ ['red',         'firebrick3'],
+            \ ]
+    " }
+
+    " 状态栏增强展示 {
+        " 新的airline配置
+        Bundle 'bling/vim-airline'
+        if !exists('g:airline_symbols')
+            let g:airline_symbols = {}
+        endif
+        let g:airline_left_sep = '▶'
+        let g:airline_left_alt_sep = '❯'
+        let g:airline_right_sep = '◀'
+        let g:airline_right_alt_sep = '❮'
+        let g:airline_symbols.linenr = '¶'
+        let g:airline_symbols.branch = '⎇'
+        " 是否打开tabline
+        " let g:airline#extensions#tabline#enabled = 1
+    " }
+
+    " Indent Guides {
+        " 将相同缩进的代码关联起来
+        Bundle 'nathanaelkane/vim-indent-guides'
+        " 随 vim 自启动
+        let g:indent_guides_enable_on_vim_startup=1
+        " 从第二层开始可视化显示缩进
+        let g:indent_guides_start_level=2
+        " 色块宽度
+        let g:indent_guides_guide_size=1
+        " 快捷键 i 开/关缩进可视化
+        :nmap <silent> <Leader>i <Plug>IndentGuidesToggle
+    " }
+
+    " 代码折叠 {
+        " za，打开或关闭当前折叠；zM，关闭所有折叠；zR，打开所有折叠
+        " 基于缩进或语法进行代码折叠
+        "set foldmethod=indent
+        set foldmethod=syntax
+        " 启动 vim 时关闭折叠代码
+        set nofoldenable
+    " }
+
+    " Bash like keys for the command line {
+        cnoremap <C-A>      <Home>
+        cnoremap <C-E>      <End>
+        cnoremap <C-K>      <C-U>
+
+        cnoremap <C-P> <Up>
+        cnoremap <C-N> <Down>
+    " }
+
+    " Useful mappings for managing tabs {
+        " open a new tab
+        map <leader>tn :tabnew<cr>
+        map <leader>to :tabonly<cr>
+        map <leader>tc :tabclose<cr>
+        map <leader>tm :tabmove 
+
+        " Opens a new tab with the current buffer's path
+        " Super useful when editing files in the same directory
+        map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
+
+        map <C-h> :tabprev<cr>
+        map <C-l> :tabnext<cr>
+    " }
+
+    " 快速浏览标签visualmark {
+        Bundle 'zhisheng/visualmark.vim'
+        if &bg == "dark"
+            highlight SignColor ctermfg=white ctermbg=blue guifg=white guibg=peru
+        else
+            highlight SignColor ctermbg=white ctermfg=red guibg=grey guifg=RoyalBlue3
+        endif
+    " }
+    
+    " 标签列表 {
+        " Tagbar: The Vim class outline viewer
+        Bundle 'majutsushi/tagbar'
+        " layout
+        let g:tagbar_left=1
+        let g:tagbar_width=25
+        let g:tagbar_autofocus = 1
+        let g:tagbar_sort = 0
+        let g:tagbar_compact = 1
+        " toggle the Tagbar window
+        "nmap <F8> :TagbarToggle<CR>
+    " } 
+
+    " The NERD tree Settings {
+        Bundle 'The-NERD-tree'
+        " Nerd Tree
+        let NERDChristmasTree=0
+        let NERDTreeWinSize=30
+        let NERDTreeChDirMode=2
+        let NERDTreeIgnore=['\~$', '\.pyc$', '\.swp$']
+        " let NERDTreeSortOrder=['^__\.py$', '\/$', '*', '\.swp$', '\~$']
+        let NERDTreeShowBookmarks=1
+        let NERDTreeWinPos = "right"
+    " }
+
+    " Make Arrow Keys Useful Again {
+        map <right> <ESC>:NERDTreeToggle<RETURN>
+        map <left> <ESC>:TagbarToggle<RETURN>
+        "map <right> <ESC>:Tlist<RETURN>
+        "map <up> <ESC>gT
+        "map <down> <ESC>gt
+    " }
+
+    " 文件名、路径名模糊搜索 {
+        Bundle 'ctrlpvim/ctrlp.vim'
+        let g:ctrlp_map = '<leader>p'
+        let g:ctrlp_cmd = 'CtrlP'
+        map <leader>f :CtrlPMRU<CR>
+        let g:ctrlp_custom_ignore = {
+            \ 'dir':  '\v[\/]\.(git|hg|svn|rvm)$',
+            \ 'file': '\v\.(exe|so|dll|zip|tar|tar.gz|pyc)$',
+            \ }
+        let g:ctrlp_working_path_mode=0
+        let g:ctrlp_match_window_bottom=1
+        let g:ctrlp_max_height=15
+        let g:ctrlp_match_window_reversed=0
+        let g:ctrlp_mruf_max=500
+        let g:ctrlp_follow_symlinks=1 
+    " }
+
+    " 编辑大文件 {
+        Bundle 'markwu/largefile'
+    " }
+
+    " 选中区块 {
+        Bundle 'terryma/vim-expand-region'
+        " map + <Plug>(expand_region_expand)
+        " map _ <Plug>(expand_region_shrink)
+        vmap v <Plug>(expand_region_expand)
+        vmap V <Plug>(expand_region_shrink)
+    " }
+
+    " 类似sublimetext的搜索 {
+        Bundle "dyng/ctrlsf.vim"
+        " In CtrlSF window:
+        " 回车/o, 打开
+        " t       在tab中打开(建议)
+        " T - Lkie t but focus CtrlSF window instead of opened new tab.
+        " q - Quit CtrlSF window.
+        nmap \ <Plug>CtrlSFCwordPath<CR>
+        " let g:ctrlsf_position = 'below'
+        " let g:ctrlsf_winsize = '30%'
+        let g:ctrlsf_auto_close = 0
+        let g:ctrlsf_confirm_save = 0
+        " Note: cannot use <CR> or <C-m> for open
+        " Use : <sapce> or <tab>
+        let g:ctrlsf_mapping = {
+            \ "open"  : "<Space>",
+            \ "openb" : "O",
+            \ "tab"   : "t",
+            \ "tabb"  : "T",
+            \ "prevw" : "p",
+            \ "quit"  : "q",
+            \ "next"  : "<C-J>",
+            \ "prev"  : "<C-K>",
+            \ "pquit" : "q",
+            \ }
+    " }
+" }
+
+" C++ Settings {
+    " snipMate Settings {
+        " Share same snippets between C and C++.
+        au BufNewFile,BufRead *.cpp,*.h,*.hpp set ft=cpp.c
+        " 设置C++缩进
+        autocmd FileType cpp setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=79
+    " }
+
+    " todo Settings {
+        if getline(1) =~? '^#\?TODO\>'
+            setfiletype todo
+        endif
+    " }
+
+    " 接口与实现快速切换 {
+        Bundle 'a.vim'
+        Bundle 'c.vim'
+        " *.cpp 和 *.h 间切换
+        nmap <Leader>ch :A<CR>
+        " 子窗口中显示 *.cpp 或 *.h
+        nmap <Leader>sch :AS<CR>
+    " }
+
+    " 代码注释 {
+        Bundle 'scrooloose/nerdcommenter'
+    " }
+
+    " 文档注释 {
+        Bundle 'DoxygenToolkit.vim'
+        map <leader>dox :Dox<CR>
+    " }
+
+    " 语法检查 {
+        Bundle 'scrooloose/syntastic'
+        " 在打开文件的时候检查
+        let g:syntastic_check_on_open = 1
+    " }
+
+    " YCM {
+        Bundle 'Valloric/YouCompleteMe'
+"迄今为止用到的最好的自动VIM自动补全插件
+"重启 :YcmRestartServer
+Bundle 'Valloric/YouCompleteMe'
+"youcompleteme  默认tab  s-tab 和自动补全冲突
+"let g:ycm_key_list_select_completion=['<c-n>']
+let g:ycm_key_list_select_completion = ['<Down>']
+"let g:ycm_key_list_previous_completion=['<c-p>']
+let g:ycm_key_list_previous_completion = ['<Up>']
+let g:ycm_complete_in_comments = 1  "在注释输入中也能补全
+let g:ycm_complete_in_strings = 1   "在字符串输入中也能补全
+let g:ycm_use_ultisnips_completer = 1 "提示UltiSnips
+let g:ycm_collect_identifiers_from_comments_and_strings = 1   "注释和字符串中的文字也会被收入补全
+let g:ycm_collect_identifiers_from_tags_files = 1
+
+"let g:ycm_seed_identifiers_with_syntax=1   "语言关键字补全, 不过python关键字都很短，所以，需要的自己打开
+
+" 跳转到定义处, 分屏打开
+let g:ycm_goto_buffer_command = 'horizontal-split'
+" nnoremap <leader>jd :YcmCompleter GoToDefinition<CR>
+nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
+nnoremap <leader>gd :YcmCompleter GoToDeclaration<CR>
+
+" 引入，可以补全系统，以及python的第三方包 针对新老版本YCM做了兼容
+" old version
+if !empty(glob("~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py"))
+    let g:ycm_global_ycm_extra_conf = "~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py"
+endif
+" new version
+if !empty(glob("~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py"))
+    let g:ycm_global_ycm_extra_conf = "~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py"
+endif
+
+" 直接触发自动补全 insert模式下
+" let g:ycm_key_invoke_completion = '<C-Space>'
+" 黑名单,不启用
+let g:ycm_filetype_blacklist = {
+      \ 'tagbar' : 1,
+      \ 'gitcommit' : 1,
+      \}
+    " }
+" }
+
+" Python Settings {
+    " python 基本设置 {
+        " Python 文件的一般设置，比如不要 tab 等
+        autocmd FileType python set tabstop=4 shiftwidth=4 expandtab ai
+
+        " 保存python文件时删除多余空格
+        " Delete trailing white space on save, useful for Python and CoffeeScript ;)
+        func! DeleteTrailingWS()
+            exe "normal mz"
+            %s/\s\+$//ge
+            exe "normal `z"
+        endfunc
+        autocmd BufWrite *.py :call DeleteTrailingWS()
+
+        " 定义函数AutoSetFileHead，自动插入文件头
+        autocmd BufNewFile *.sh,*.py exec ":call AutoSetFileHead()"
+        function! AutoSetFileHead()
+            "如果文件类型为.sh文件
+            if &filetype == 'sh'
+                call setline(1, "\#!/bin/bash")
+            endif
+
+            "如果文件类型为python
+            if &filetype == 'python'
+                call setline(1, "\#!/usr/bin/env python")
+                call append(1, "\# -*- coding: utf-8 -*-")
+            endif
+
+            normal G
+            normal o
+            normal o
+        endfunc
+
+        " c-F6 to run python script
+        nnoremap <buffer> <c-F6> :exec '!python' shellescape(@%, 1)<cr>
+    " }
+
+    " 语法高亮 {
+        Bundle 'hdima/python-syntax'
+        let python_highlight_all = 1
+    " }
+
+    " 语法检查 {
+        " python fly check, 弥补syntastic只能打开和保存才检查语法的不足
+        Bundle 'kevinw/pyflakes-vim'
+        let g:pyflakes_use_quickfix = 0
+    " }
+" }
