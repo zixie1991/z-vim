@@ -184,6 +184,10 @@
             \ ]
     " }
 
+    " fugitive.vim: a Git wrapper so awesome {
+        Bundle 'tpope/vim-fugitive'
+    " }
+
     " 状态栏增强展示 {
         " 新的airline配置
         Bundle 'bling/vim-airline'
@@ -196,8 +200,11 @@
         let g:airline_right_alt_sep = '❮'
         let g:airline_symbols.linenr = '¶'
         let g:airline_symbols.branch = '⎇'
+        let g:airline_theme='wombat'
         " 是否打开tabline
-        " let g:airline#extensions#tabline#enabled = 1
+        let g:airline#extensions#tabline#enabled = 1
+        " let g:airline#extensions#hunks#enabled=1
+        " let g:airline#extensions#branch#enabled=1
     " }
 
     " Indent Guides {
@@ -551,5 +558,9 @@
         Bundle 'davidhalter/jedi-vim'
         let g:jedi#auto_initialization = 0
         let g:jedi#completions_command = "<C-N>"
+    " }
+
+    " virualenv {
+        Bundle 'jmcantrell/vim-virtualenv'
     " }
 " }

@@ -184,6 +184,10 @@
             \ ]
     " }
 
+    " fugitive.vim: a Git wrapper so awesome {
+        Bundle 'tpope/vim-fugitive'
+    " }
+
     " 状态栏增强展示 {
         " 新的airline配置
         Bundle 'bling/vim-airline'
@@ -197,7 +201,7 @@
         let g:airline_symbols.linenr = '¶'
         let g:airline_symbols.branch = '⎇'
         " 是否打开tabline
-        " let g:airline#extensions#tabline#enabled = 1
+        let g:airline#extensions#tabline#enabled = 1
     " }
 
     " Indent Guides {
@@ -473,5 +477,9 @@ let g:ycm_filetype_blacklist = {
         " python fly check, 弥补syntastic只能打开和保存才检查语法的不足
         Bundle 'kevinw/pyflakes-vim'
         let g:pyflakes_use_quickfix = 0
+    " }
+
+    " virualenv {
+        Bundle 'jmcantrell/vim-virtualenv'
     " }
 " }
