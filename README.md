@@ -51,3 +51,4 @@ make install-server
 ----
 
 *   [插件管理](docs/plugin.md)
+*   [YCM智能补全](docs/youcompleteme.md)
