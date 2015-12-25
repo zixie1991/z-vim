@@ -20,15 +20,25 @@ C/C++、Python开发者
 安装
 ----
 
+本安装说明假设你的操作系统为 ubuntu，且已经安装了基本的 C/C++, Python 开发环境
+（包括gcc, g++, git, pip, make, cmake等）
+
 1 clone z-vim到本地
 
 ```
 git clone https://github.com/zixie1991/z-vim.git
+# cd z-vim
+# git submodule init
+# git submodule update
 ```
 
 2 安装第三依赖
 
 ```
+# ctags
+apt-get install ctags
+apt-get install ack
+
 # python devel
 sudo pip install pylint
 sudo pip install pep8
