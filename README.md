@@ -51,10 +51,15 @@ make install-desktop
 make install-server
 ```
 
+vim 的 desktop 与 server 版本的区别为：desktop 版使用 YouCompleteMe 进行语法检
+查和自动提示，而 server 版使用 neocomplcache 和 jedi-vim 进行自动补全，使用 
+syntastic 进行语法检查，且 server 版本少了一些炫酷的效果
+
 4 安装插件
 
 +   启动 vim
 +   执行命令 `:BundleInstall`
++   如果采用 desktop 版本，YouCompleteMe 的安装参考[YCM智能补全](docs/youcompleteme.md)
 
 5 编译必要插件（如YouCompleteMe）
 
