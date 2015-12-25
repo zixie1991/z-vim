@@ -52,8 +52,8 @@ make install-server
 ```
 
 vim 的 desktop 与 server 版本的区别为：desktop 版使用 YouCompleteMe 进行语法检
-查和自动提示，而 server 版使用 neocomplcache 和 jedi-vim 进行自动补全，使用 
-syntastic 进行语法检查，且 server 版本少了一些炫酷的效果
+查和自动提示，而 server 版使用 neocomplcache 和 jedi-vim 进行自动补全、
+syntastic 进行语法检查，且 server 版本少了一些美化的插件
 
 4 安装插件
 
