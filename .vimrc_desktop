@@ -63,7 +63,7 @@
     set linebreak
     " Set the default file encoding to UTF-8: ``set encoding=utf-8``
     set encoding=utf-8
-    set fileencodings=utf-8,chinese,ucs-bom,latin-1
+    set fileencodings=utf-8,gb2312,gbk,gb18030,chinese,ucs-bom,latin-1
     "language messages zh_CN.utf-8
     language messages en_US.UTF-8
 " }
