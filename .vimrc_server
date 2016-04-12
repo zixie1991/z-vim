@@ -368,11 +368,15 @@
 
     " 接口与实现快速切换 {
         Bundle 'a.vim'
-        Bundle 'c.vim'
+        " Bundle 'c.vim'
         " *.cpp 和 *.h 间切换
         nmap <Leader>ch :A<CR>
         " 子窗口中显示 *.cpp 或 *.h
         nmap <Leader>sch :AS<CR>
+    " }
+
+    " 自动匹配 {
+        Bundle 'jiangmiao/auto-pairs'
     " }
 
     " ctags {
