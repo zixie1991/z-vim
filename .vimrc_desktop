@@ -353,8 +353,11 @@
     " snipMate Settings {
         " Share same snippets between C and C++.
         au BufNewFile,BufRead *.cpp,*.h,*.hpp set ft=cpp.c
+        au BufNewFile,BufRead *.cu set ft=cuda
+        au BufNewFile,BufRead *.cuh set ft=cuda
         " 设置C++缩进
         autocmd FileType cpp setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=79
+        autocmd FileType cuda setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=79
     " }
 
     " todo Settings {
