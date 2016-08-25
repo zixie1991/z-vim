@@ -10,8 +10,8 @@ vim配置
 
 原则：
 
-*    保持简单
-*    组织结构清晰、易懂
+* 保持简单
+* 组织结构清晰、易懂
 
 适用人群：
 
@@ -23,18 +23,17 @@ C/C++、Python开发者
 本安装说明假设你的操作系统为 ubuntu，且已经安装了基本的 C/C++, Python 开发环境
 （包括gcc, g++, git, pip, make, cmake等）
 
-1 clone z-vim到本地
 
-```
+1. clone z-vim到本地
+  ```
 git clone https://github.com/zixie1991/z-vim.git
 # cd z-vim
 # git submodule init
 # git submodule update
-```
+  ```
 
-2 安装第三依赖
-
-```
+2. 安装第三依赖
+  ```
 # ctags
 apt-get install ctags
 apt-get install ack
@@ -42,26 +41,23 @@ apt-get install ack
 # python devel
 sudo pip install pylint
 sudo pip install pep8
-```
+  ```
 
-3 拷贝配置文件到工作目录（vim配置文件分为desktop和server两个版本，server版功能相对desktop版简洁）
-
-```
+3. 拷贝配置文件到工作目录（vim配置文件分为desktop和server两个版本，server版功能相对desktop版简洁）
+  ```
 make install-desktop
 make install-server
-```
-
+  ```
 vim 的 desktop 与 server 版本的区别为：desktop 版使用 YouCompleteMe 进行语法检
 查和自动提示，而 server 版使用 neocomplcache 和 jedi-vim 进行自动补全、
 syntastic 进行语法检查，且 server 版本少了一些美化的插件
 
-4 安装插件
+4. 安装插件
+  + 启动 vim
+  + 执行命令 `:BundleInstall`
+  + 如果采用 desktop 版本，YouCompleteMe 的安装参考[YCM智能补全](docs/youcompleteme.md)
 
-+   启动 vim
-+   执行命令 `:BundleInstall`
-+   如果采用 desktop 版本，YouCompleteMe 的安装参考[YCM智能补全](docs/youcompleteme.md)
-
-5 编译必要插件（如YouCompleteMe）
+5. 编译必要插件（如YouCompleteMe）
 
 常用命令快捷键
 ----
@@ -74,8 +70,8 @@ syntastic 进行语法检查，且 server 版本少了一些美化的插件
 
 常用操作：
 
-*   `<leader>`cc，注释当前选中文本，如果选中的是整行则在每行首添加 //，如果选中一行的部分内容则在选中部分前后添加分别 /、/；
-*   `<leader>`cu，取消选中文本块的注释。
+* `<leader>`cc，注释当前选中文本，如果选中的是整行则在每行首添加 //，如果选中一行的部分内容则在选中部分前后添加分别 /、/；
+* `<leader>`cu，取消选中文本块的注释。
 
 #### 源文件和头文件间快速切换
 
@@ -96,24 +92,24 @@ vim 支持正则表达式，那么已经具有强劲的查供能力，在当前�
 
 常用操作:
 
-*   将光标移动到你要查找的关键字, 执行 \o 进行全局查找
-*   Ctrl-k 向上查找, Ctrl-j 向下查找
-*   q 退出全局查找界面
+* 将光标移动到你要查找的关键字, 执行 \o 进行全局查找
+* Ctrl-k 向上查找, Ctrl-j 向下查找
+* q 退出全局查找界面
 
 
 #### 代码阅读
 
 ##### ctags
 
-1.  生成tags：在项目根目录打开vim，执行F5
-2.  用"ctrl+]"快捷键，跳转到光标所在函数标识符的定义处
-3.  函数有重载时，使用"g]"跳转
-4.  在函数中移动光标的快捷键:
-    *   [{ 转到上一个位于第一列的"{"
-    *   }] 转到下一个位于第一列的"{"
-    *   { 转到上一个空行
-    *   } 转到下一个空行
-    *   gd 转到当前光标所指的局部变量的定义
+1. 生成tags：在项目根目录打开vim，执行F5
+2. 用"ctrl+]"快捷键，跳转到光标所在函数标识符的定义处
+3. 函数有重载时，使用"g]"跳转
+4. 在函数中移动光标的快捷键:
+  * [{ 转到上一个位于第一列的"{"
+  * }] 转到下一个位于第一列的"{"
+  * { 转到上一个空行
+  * } 转到下一个空行
+  * gd 转到当前光标所指的局部变量的定义
     *   * 转到当前光标所指的单词下一次出现的地方
     *   # 转到当前光标所指的单词上一次出现的地方
 
@@ -121,8 +117,8 @@ vim 支持正则表达式，那么已经具有强劲的查供能力，在当前�
 
 ##### 基于标签的智能补全
 
-1.  生成tags：在项目根目录打开vim，执行F5
-2.  提示就产生了
+1. 生成tags：在项目根目录打开vim，执行F5
+2. 提示就产生了
 
 ### 项目管理
 
@@ -133,5 +129,5 @@ vim 支持正则表达式，那么已经具有强劲的查供能力，在当前�
 目录
 ----
 
-*   [插件管理](docs/plugin.md)
-*   [YCM智能补全](docs/youcompleteme.md)
+* [插件管理](docs/plugin.md)
+* [YCM智能补全](docs/youcompleteme.md)
