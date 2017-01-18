@@ -20,7 +20,7 @@ C/C++、Python开发者
 安装
 ----
 
-本安装说明假设你的操作系统为 ubuntu，且已经安装了基本的 C/C++, Python 开发环境
+本安装说明假设你的操作系统为 ubuntu/macOS，且已经安装了基本的 C/C++, Python 开发环境
 （包括gcc, g++, git, pip, make, cmake等）
 
 
@@ -33,6 +33,8 @@ git clone https://github.com/zixie1991/z-vim.git
   ```
 
 2. 安装第三依赖
+
+linux
   ```
 # ctags
 apt-get install ctags
@@ -41,6 +43,17 @@ apt-get install ack
 # python devel
 sudo pip install pylint
 sudo pip install pep8
+  ```
+
+macOS
+  ```
+# ctags
+brew install ctags
+brew install ack
+
+# python devel
+pip install pylint
+pip install pep8
   ```
 
 3. 拷贝配置文件到工作目录（vim配置文件分为desktop和server两个版本，server版功能相对desktop版简洁）
