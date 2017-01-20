@@ -37,8 +37,8 @@ git clone https://github.com/zixie1991/z-vim.git
 linux
   ```
 # ctags
-apt-get install ctags
-apt-get install ack
+sudo apt-get install ctags
+sudo apt-get install ack
 
 # python devel
 sudo pip install pylint
