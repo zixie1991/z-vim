@@ -36,7 +36,7 @@
     set directory=/tmp " directory to place swap files in
     set fileformats=unix,dos,mac " support all three, in this order
     set hidden " you can change buffers without saving
-    set iskeyword+=_,$,@,%,#,: " none of these are word dividers 
+    set iskeyword+=_,$,@,%,#,:,:: " none of these are word dividers 
     "set mouse=a " use mouse everywhere
     set mouse=v
     set noerrorbells " don't make noise
@@ -329,6 +329,7 @@
         " T - Lkie t but focus CtrlSF window instead of opened new tab.
         " q - Quit CtrlSF window.
         nmap \ <Plug>CtrlSFCwordPath<CR>
+	nnoremap <C-f> :CtrlSF<Space>
         " let g:ctrlsf_position = 'below'
         " let g:ctrlsf_winsize = '30%'
         let g:ctrlsf_auto_close = 0
@@ -459,6 +460,9 @@
         let g:syntastic_check_on_open=1
         let g:syntastic_check_on_wq=0
         let g:syntastic_enable_highlighting=1
+
+        " C++11语法
+		let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
 
         " 最轻量
         " let g:syntastic_python_checkers=['pyflakes'] " 使用pyflakes
