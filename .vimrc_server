@@ -36,7 +36,7 @@
     set directory=/tmp " directory to place swap files in
     set fileformats=unix,dos,mac " support all three, in this order
     set hidden " you can change buffers without saving
-    set iskeyword+=_,$,@,%,#,:,:: " none of these are word dividers 
+    set iskeyword+=_,$,@,%,#,: " none of these are word dividers 
     "set mouse=a " use mouse everywhere
     set mouse=v
     set noerrorbells " don't make noise
@@ -200,7 +200,7 @@
         let g:airline_right_alt_sep = '❮'
         let g:airline_symbols.linenr = '¶'
         let g:airline_symbols.branch = '⎇'
-        let g:airline_theme='wombat'
+        let g:airline_theme='dark'
         " 是否打开tabline
         let g:airline#extensions#tabline#enabled = 1
         " let g:airline#extensions#hunks#enabled=1
@@ -516,9 +516,6 @@
         let g:syntastic_check_on_wq=0
         let g:syntastic_enable_highlighting=1
 
-        " C++11语法
-		let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
-
         " 最轻量
         " let g:syntastic_python_checkers=['pyflakes'] " 使用pyflakes
 
@@ -614,5 +611,49 @@
 
     " virualenv {
         Bundle 'jmcantrell/vim-virtualenv'
+    " }
+
+    " {
+        Bundle 'fatih/vim-go'
+        let g:go_version_warning = 0
+        let g:go_highlight_functions = 1
+        let g:go_highlight_methods = 1
+        let g:go_highlight_fields = 1
+        let g:go_highlight_types = 1
+        let g:go_highlight_operators = 1
+        let g:go_highlight_build_constraints = 1
+        let g:go_fmt_autosave = 0
+		let g:tagbar_type_go = {
+			\ 'ctagstype' : 'go',
+			\ 'kinds'     : [
+				\ 'p:package',
+				\ 'i:imports:1',
+				\ 'c:constants',
+				\ 'v:variables',
+				\ 't:types',
+				\ 'n:interfaces',
+				\ 'w:fields',
+				\ 'e:embedded',
+				\ 'm:methods',
+				\ 'r:constructor',
+				\ 'f:functions'
+			\ ],
+			\ 'sro' : '.',
+			\ 'kind2scope' : {
+				\ 't' : 'ctype',
+				\ 'n' : 'ntype'
+			\ },
+			\ 'scope2kind' : {
+				\ 'ctype' : 't',
+				\ 'ntype' : 'n'
+			\ },
+			\ 'ctagsbin'  : 'gotags',
+			\ 'ctagsargs' : '-sort -silent'
+		\ }
+    " }
+
+    " {
+        Bundle 'nsf/gocode', {'rtp': 'vim/'}
+        imap <C-n> <C-x><C-o>
     " }
 " }

@@ -1,7 +1,7 @@
 vim配置
 ====
 
-使用vim已经有3年时间了，一度试图将vim打造为C/C++、Python IDE。但慢慢发现
+使用vim已经有3年时间了，一度试图将vim打造为C/C++、Python、Go IDE。但慢慢发现
 插件配置越来越多、配置文件组织也越来越乱，所以决定从零开始整理之前的vim配置，
 并将自己的vim打造为一款称手好用的编辑器。
 
@@ -54,23 +54,38 @@ brew install ack
 # python devel
 pip install pylint
 pip install pep8
+
+# go devel
+# 路径下创建此文件
+mkdir -p $GOPATH/src/golang.org/x
+# 切换到此目录
+cd $GOPATH/src/golang.org/x
+# 通过git安装tools，tools版本和go版本需要一致
+git clone https://github.com/golang/tools.git
+# 安装lint 
+git clone https://github.com/golang/lint.git
+go get golang.org/x/lint/golint
+# 安装sync
+git clone https://github.com/golang/sync.git
+go get golang.org/x/lint/sync
+# 安装xerrors
+git clone https://github.com/golang/xerrors.git
+go get golang.org/x/lint/xerrors
+# 安装gocode
+go install github.com/nsf/gocode
+# 安装gopls
+go get golang.org/x/tools/gopls
   ```
 
-3. 拷贝配置文件到工作目录（vim配置文件分为desktop和server两个版本，server版功能相对desktop版简洁）
+3. 拷贝配置文件到工作目录
   ```
-make install-desktop
 make install-server
   ```
-vim 的 desktop 与 server 版本的区别为：desktop 版使用 YouCompleteMe 进行语法检
-查和自动提示，而 server 版使用 neocomplcache 和 jedi-vim 进行自动补全、
-syntastic 进行语法检查，且 server 版本少了一些美化的插件
+使用 neocomplcache 和 jedi-vim 进行自动补全、syntastic 进行语法检查，且 server 版本少了一些美化的插件
 
 4. 安装插件
   + 启动 vim
   + 执行命令 `:BundleInstall`
-  + 如果采用 desktop 版本，YouCompleteMe 的安装参考[YCM智能补全](docs/youcompleteme.md)
-
-5. 编译必要插件（如YouCompleteMe）
 
 常用命令快捷键
 ----
@@ -146,19 +161,22 @@ vim 支持正则表达式，那么已经具有强劲的查供能力，在当前�
     *   `#` 转到当前光标所指的单词上一次出现的地方
 5. 跳转返回 Ctrl-o
 
-##### ycm
-
-1. 跳转到代码定义的位置 `<leader> gl`
-2. 调转到代码实现的位置 `<leader> gf`
-3. 跳转到代码定义or实现的位置 `<leader> gg`
-4. 跳转返回 Ctrl-o
-
 #### 智能补全
 
 ##### 基于标签的智能补全
 
 1. 生成tags：在项目根目录打开vim，执行F5
 2. 提示就产生了
+
+#### go自动提示跳转
+
+gocode智能提示
+
+1. `<C-n>` 自动提示
+
+gopls跳转
+
+1. `<C-]>` 跳转定义
 
 ### 版本控制
 
@@ -180,4 +198,3 @@ nmap ]c <Plug>GitGutterNextHunk
 ----
 
 * [插件管理](docs/plugin.md)
-* [YCM智能补全](docs/youcompleteme.md)
