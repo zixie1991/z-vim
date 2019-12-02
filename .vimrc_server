@@ -623,6 +623,22 @@
         let g:go_highlight_operators = 1
         let g:go_highlight_build_constraints = 1
         let g:go_fmt_autosave = 0
+        let g:go_fmt_command = "goimports" " 格式化将默认的 gofmt 替换
+        let g:go_autodetect_gopath = 1
+        let g:go_list_type = "quickfix"
+
+        let g:go_version_warning = 0
+        let g:go_highlight_types = 1
+        let g:go_highlight_fields = 1
+        let g:go_highlight_functions = 1
+        let g:go_highlight_function_calls = 1
+        let g:go_highlight_operators = 1
+        let g:go_highlight_extra_types = 1
+        let g:go_highlight_methods = 1
+        let g:go_highlight_generate_tags = 1
+
+        let g:godef_split=2
+        "
 		let g:tagbar_type_go = {
 			\ 'ctagstype' : 'go',
 			\ 'kinds'     : [
@@ -655,5 +671,18 @@
     " {
         Bundle 'nsf/gocode', {'rtp': 'vim/'}
         imap <C-n> <C-x><C-o>
+    " }
+    
+    " YCM {
+        "迄今为止用到的最好的自动VIM自动补全插件
+        "重启 :YcmRestartServer
+        Bundle 'Valloric/YouCompleteMe'
+        if !empty(glob("~/.ycm_extra_conf.py"))
+            let g:ycm_global_ycm_extra_conf = "~/.ycm_extra_conf.py"
+        endif
+
+        let g:ycm_key_invoke_completion = '<C-N>'
+        map <leader>gd :YcmCompleter GoToDefinition<CR>
+        map <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
     " }
 " }

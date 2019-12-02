@@ -86,6 +86,7 @@ make install-server
 4. 安装插件
   + 启动 vim
   + 执行命令 `:BundleInstall`
+  + 执行命令 `:GoInstallBinaries`
 
 常用命令快捷键
 ----
