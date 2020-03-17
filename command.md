@@ -22,3 +22,5 @@ vi:%!xxd -r
 ```
 
 4. 保存:wq
+
+Mac相关应用推荐：Synalyze It!、HexFiend
