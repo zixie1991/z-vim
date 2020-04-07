@@ -56,25 +56,6 @@ pip install pylint
 pip install pep8
 
 # go devel
-# 路径下创建此文件
-mkdir -p $GOPATH/src/golang.org/x
-# 切换到此目录
-cd $GOPATH/src/golang.org/x
-# 通过git安装tools，tools版本和go版本需要一致
-git clone https://github.com/golang/tools.git
-# 安装lint 
-git clone https://github.com/golang/lint.git
-go get golang.org/x/lint/golint
-# 安装sync
-git clone https://github.com/golang/sync.git
-go get golang.org/x/lint/sync
-# 安装xerrors
-git clone https://github.com/golang/xerrors.git
-go get golang.org/x/lint/xerrors
-# 安装gocode
-go install github.com/nsf/gocode
-# 安装gopls
-go get golang.org/x/tools/gopls
   ```
 
 3. 拷贝配置文件到工作目录
