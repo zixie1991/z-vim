@@ -69,10 +69,6 @@ make install-server
   + 执行命令 `:BundleInstall`
   + 执行命令 `:GoInstallBinaries`
   
-```
-go get github.com/zmb3/gogetdoc
-go get golang.org/x/tools/cmd/guru
-```
 
 常用命令快捷键
 ----
