@@ -68,6 +68,11 @@ make install-server
   + 启动 vim
   + 执行命令 `:BundleInstall`
   + 执行命令 `:GoInstallBinaries`
+
+5. YouCompleteMe编译安装
+```
+python install.py --go-completer --clang-completer
+```
   
 
 常用命令快捷键
