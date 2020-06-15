@@ -71,6 +71,7 @@ make install-server
 
 5. YouCompleteMe编译安装
 ```
+go get github.com/nsf/gocode
 python install.py --go-completer --clang-completer
 ```
   
