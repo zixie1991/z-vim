@@ -685,4 +685,14 @@
         map <leader>gd :YcmCompleter GoToDefinition<CR>
         map <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
     " }
+
+    " {
+        "thrift
+        Bundle 'solarnz/thrift.vim'
+        au BufRead,BufNewFile *.thrift set filetype=thrift
+        "protobuf
+        Bundle 'uarun/vim-protobuf'
+        "json
+        Bundle 'elzr/vim-json'
+    " }
 " }
