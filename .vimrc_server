@@ -679,6 +679,7 @@
         Bundle 'Valloric/YouCompleteMe'
         if !empty(glob("~/.ycm_extra_conf.py"))
             let g:ycm_global_ycm_extra_conf = "~/.ycm_extra_conf.py"
+            let g:ycm_confirm_extra_conf = 0
         endif
 
         let g:ycm_key_invoke_completion = '<C-N>'
