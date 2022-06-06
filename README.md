@@ -15,7 +15,7 @@ vim配置
 
 适用人群：
 
-C/C++、Python开发者
+C/C++、Python、Go开发者
 
 安装
 ----
